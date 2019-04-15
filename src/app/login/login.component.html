@@ -1,0 +1,9 @@
+<label for="Usuario">Usuario</label>
+<input type="text" (input)="user = $event.target.value">
+<br>
+
+<label for="Contraseña">Contraseña</label>
+<input type="text" (input)= "password = $event.target.value">
+<br>
+
+<button (click)="login()">Log in</button>
