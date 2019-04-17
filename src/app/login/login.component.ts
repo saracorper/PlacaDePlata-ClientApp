@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       email: this.email
     }
     this.http
-      .post('http://localhost:3000/api-mongo/login', body)
+      .post('http://localhost:3000/api/login', body)
       .subscribe((res: { token:string }) => {
         console.log(res);
         this.storage.save('token',res.token)
