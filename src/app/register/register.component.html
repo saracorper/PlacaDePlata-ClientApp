@@ -1,0 +1,15 @@
+<label for="email">Email</label>
+<input type="text" (input)="email = $event.target.value">
+<br>
+
+<label for="Contraseña">Contraseña</label>
+<input type="text" (input)="password = $event.target.value">
+<br>
+
+<label for="Confirmar contraseña">Confirmar contraseña</label>
+<input type="text" (input)="confirmPassword = $event.target.value">
+<br>
+
+<p>¿Ya tienes cuenta?<a [routerLink]="['/login']"> Identifícate aquí </a></p>
+<button (click)="register()">Regístrate</button>
+

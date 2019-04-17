@@ -6,4 +6,5 @@
 <input type="text" (input)= "password = $event.target.value">
 <br>
 
+<p>¿No tienes cuenta?<a [routerLink]="['/register']">Registrate aquí</a></p>
 <button (click)="login()">Log in</button>
