@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { StorageServiceModule } from 'angular-webstorage-service';
@@ -21,7 +22,8 @@ import { ActivateAccountComponent } from './pages/activate-account/activate-acco
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StorageServiceModule 
+    StorageServiceModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
