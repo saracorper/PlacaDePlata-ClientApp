@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ActivateAccountComponent } from './pages/activate-account/activate-acco
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
