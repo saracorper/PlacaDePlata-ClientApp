@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { PostService } from 'src/app/services/post.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'pdp-gallery',
@@ -11,17 +11,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 export class GalleryComponent implements OnInit {
 
-  constructor(private http: HttpClient, private postService: PostService) { }
+  constructor(private postService: PostService, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
 
-
-
-
-
-    
+    let token = this.localStorage.read('token');
+    console.log('token leido :', token);
   }
-
-  
-
 }

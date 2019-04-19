@@ -16,4 +16,11 @@ export class LocalStorageService {
     this.data[key]= value;
 
   }
+
+  public read(key: string): void {
+
+    let value =this.data[key];
+
+    return value || this.storage.get(key);
+  }
 }
