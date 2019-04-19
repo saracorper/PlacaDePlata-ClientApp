@@ -11,6 +11,9 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 export class GalleryComponent implements OnInit {
 
+  public posts = [];
+    
+
   constructor(private postService: PostService, private localStorage: LocalStorageService) { }
 
   ngOnInit() {
@@ -23,6 +26,7 @@ export class GalleryComponent implements OnInit {
 
     this.postService.list(token).subscribe(posts =>{
       console.log(posts);
+      this.posts = posts;
     });
   }
 }
