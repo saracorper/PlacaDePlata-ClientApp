@@ -17,7 +17,7 @@ export class LocalStorageService {
 
   }
 
-  public read(key: string): void {
+  public read(key: string): string | boolean | number {
 
     let value =this.data[key];
 

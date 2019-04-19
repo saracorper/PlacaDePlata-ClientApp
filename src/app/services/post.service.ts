@@ -1,19 +1,25 @@
-import { Injectable, Inject } from '@angular/core';
-import { LOCAL_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private data = [];
+  
+  constructor(private http: HttpClient) { }
 
-  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService) { }
+  public list(token:string, id?:string): Observable <any> {
 
-  public list(key: string, value: string): void{
-    
-    this.storage.get(key);
-    this.data[key] = value; // sacar el token de localstorage
-    
+    const header = new HttpHeaders({
+      'JWTtoken': token
+    });
+
+    const user = id? id: 'all';
+
+    return this.http.get(`http://localhost:3000/api/users/${user}/posts`, {headers:header});
+
   }
+
+  
 }

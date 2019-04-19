@@ -15,7 +15,14 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
 
-    let token = this.localStorage.read('token');
+    let token = this.localStorage.read('token') as string;
     console.log('token leido :', token);
+
+    const helper = new JwtHelperService();
+    const decoded = helper.decodeToken(token);
+
+    this.postService.list(token).subscribe(posts =>{
+      console.log(posts);
+    });
   }
 }
