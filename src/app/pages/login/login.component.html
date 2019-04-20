@@ -1,10 +1,20 @@
-<label for="email">Email</label>
-<input type="text" (input)="email = $event.target.value">
-<br>
+<div class="pdp-form-wrapper">
+    <form #f= "ngForm" (ngSubmit)= "login()">
+        <label for="emiail">Email</label>
+        <input id="email" name="email" required email [(ngModel)]="valEmail" #email= "ngModel">
+        <div class="pdp-invalid-field" *ngIf="email.invalid && (email.dirty || email.touched)">
+           <p *ngIf="valEmail" >Email inválido</p>
+           <p *ngIf="!valEmail">Email no puede ir vacío</p>
+        </div> 
 
-<label for="Contraseña">Contraseña</label>
-<input type="text" (input)= "password = $event.target.value">
-<br>
+        <label for="contraseña">Contraseña</label>
+        <input type="password" name="password" id="password" requires minlength="3" [(ngModel)]="valPass" #password="ngModel">
+        <div class="pdp-invalid-field" *ngIf="password.invalid && (password.dirty || password.touched)">
+            <p *ngIf="valPass">La contraseña debe contener al menos 3 caracteres</p>
+            <p *ngIf="!valPass">Contraseña no puede ir vacía</p>
+        </div>
 
-<p>¿No tienes cuenta?<a [routerLink]="['/register']">Registrate aquí</a></p>
-<button (click)="login()">Log in</button>
+        <p>¿No tienes cuenta?<a [routerLink]="['/register']">Registrate aquí</a></p>
+        <button type="submit" [disabled]= "!f.valid">Login</button>
+    </form>
+</div>

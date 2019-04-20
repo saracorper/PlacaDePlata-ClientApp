@@ -9,8 +9,8 @@ import { LocalStorageService } from '../../services/local-storage.service';
 })
 export class LoginComponent implements OnInit {
 
-  public email: string = '';
-  public password: string = '';
+  public valEmail: string = '';
+  public valPass: string = '';
 
   constructor(private http: HttpClient, private storage: LocalStorageService) { }
 
@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
    * login
    */
   public login():void {
-    console.log('user', this.email);
-    console.log('password', this.password);
+    console.log('user', this.valEmail);
+    console.log('password', this.valPass);
     const body = {
-      password: this.password,
-      email: this.email
+      password: this.valPass,
+      email: this.valEmail
     }
     this.http
       .post('http://localhost:3000/api/login', body)
