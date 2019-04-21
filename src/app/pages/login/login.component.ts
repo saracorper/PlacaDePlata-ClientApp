@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pdp-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
   public valEmail: string = '';
   public valPass: string = '';
 
-  constructor(private http: HttpClient, private storage: LocalStorageService) { }
+  constructor(private loginService: LoginService, private storage: LocalStorageService, private router: Router) { }
 
 
   ngOnInit() {
@@ -28,12 +30,10 @@ export class LoginComponent implements OnInit {
       password: this.valPass,
       email: this.valEmail
     }
-    this.http
-      .post('http://localhost:3000/api/login', body)
-      .subscribe((res: { token:string }) => {
-        console.log(res);
-        this.storage.save('token',res.token)
-      });
+    this.loginService.log(body).subscribe(res => {
+      this.storage.save('token', res.token)
+      this.router.navigateByUrl('gallery');
+    })
   }
 
 }
