@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
-import { ToastyService, ToastyConfig } from "ng2-toasty";
+import { ToastyService } from "ng2-toasty";
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: "pdp-register",
   templateUrl: "./register.component.html",
@@ -13,10 +12,8 @@ export class RegisterComponent implements OnInit {
   public confPasswordVal: string = "";
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
     private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
+    private userService: UserService
   ) {}
 
   ngOnInit() {}
@@ -34,9 +31,9 @@ export class RegisterComponent implements OnInit {
       timeout: 3000,
       theme: "bootstrap"
     };
-    
-    this.http.post("http://localhost:3000/api/users", body).subscribe(
-      res => {
+
+    this.userService.create(body).subscribe(
+      () => {
         this.toastyService.success(configSuccess);
       },
       error => {

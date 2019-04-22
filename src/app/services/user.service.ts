@@ -21,4 +21,9 @@ export class UserService {
     return this.http.put(`http://localhost:3000/api/users/${id}`, user, { headers: header });
   }
 
+  public create(user: {email: string, password: string}): Observable<any> {
+
+    return this.http.post("http://localhost:3000/api/users", user);
+  }
+
 }
