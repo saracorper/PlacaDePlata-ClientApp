@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
+import { ToastyService, ToastyConfig } from 'ng2-toasty';
 @Component({
   selector: 'pdp-register',
   templateUrl: './register.component.html',
@@ -12,7 +13,10 @@ export class RegisterComponent implements OnInit {
   public passwordVal: string = '';
   public confPasswordVal: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, 
+    private router: Router,
+    private toastyService: ToastyService,
+    private toastyConfig: ToastyConfig) { }
 
   ngOnInit() {
   }
@@ -24,6 +28,22 @@ export class RegisterComponent implements OnInit {
         email: this.emailVal
     };
 
-    this.http.post("http://localhost:3000/api/users", body).subscribe();
+    this.http.post("http://localhost:3000/api/users", body).subscribe(res => 
+    error =>{
+      let config = {
+        title: 'Error.',
+        msg: 'Email ya registrado.',
+        showClose: true,
+        timeout: 3000,
+        theme: 'bootstrap'
+      };
+      if (error.status == 404 || error.status == 400)
+        this.toastyService.error(config);
+      else {
+        config.msg = "Se ha producido un error inesperado";
+        this.toastyService.error(config);
+      }
+    },
+    );
   }
 }

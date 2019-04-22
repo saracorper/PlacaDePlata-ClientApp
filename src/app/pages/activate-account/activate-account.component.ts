@@ -1,16 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ToastyService, ToastyConfig } from 'ng2-toasty';
 
 @Component({
   selector: 'pdp-activate-account',
   templateUrl: './activate-account.component.html',
-  styleUrls: ['./activate-account.component.scss']
+  styleUrls: ['./activate-account.component.scss'],
 })
 export class ActivateAccountComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  public activating: boolean = true;
+  public invalidToken: boolean = false;
+
+  constructor(private route: ActivatedRoute,
+     private userService: UserService,
+     private router: Router,
+     private storage: LocalStorageService,
+    private toastyService: ToastyService,
+    private toastyConfig: ToastyConfig
+    ) { }
 
   ngOnInit() {
     
@@ -18,7 +29,6 @@ export class ActivateAccountComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
 
       token = params.token;
-      console.log('activationToken :', params.token);
 
       let userBody = {
         confirmAt: new Date()
@@ -27,11 +37,31 @@ export class ActivateAccountComponent implements OnInit {
       const helper = new JwtHelperService();
       const decoded = helper.decodeToken(token);
 
-      console.log('decoded :', decoded);
+      if(!decoded){
+        this.activating = false;
+        this.invalidToken = true;
+      }
 
       this.userService.update(decoded.user._id, userBody, token).subscribe(user => {
-        console.log('updated user:  ', user );
-      })
+        console.log('updated user:  ', user);
+        this.storage.save('token',token);
+        this.router.navigateByUrl('gallery');
+      },
+      error => {
+        let config = {
+          title: 'Error.',
+          msg: 'Expirado el tiempo de activación.',
+          showClose: true,
+          timeout: 3000,
+          theme: 'bootstrap'
+        };
+        if (error.status == 401)
+          this.toastyService.error(config);
+        else {
+          config.msg = "Se ha producido un error inesperado";
+          this.toastyService.error(config);
+        }
+      }) //revisar
     });
   }
 

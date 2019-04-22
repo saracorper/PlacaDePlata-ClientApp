@@ -1,3 +1,7 @@
-<p>
-  activate-account works!
-</p>
+<div class= "pdp-message-wrapper">
+  <p *ngIf="activating && !invalidToken">Activando usuario</p>
+  <p *ngIf= "!activating && invalidToken">Link de activación inválido.
+    Para crear una nueva cuenta pulse <a [routerLink]="['register']" >aquí</a>
+  </p>
+
+</div>
