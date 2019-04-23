@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ActivateAccountComponent } from './pages/activate-account/activate-account.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ToastyModule } from 'ng2-toasty';
+import { PostFormComponent } from './pages/post-form/post-form.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ToastyModule } from 'ng2-toasty';
     LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
-    GalleryComponent
+    GalleryComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <div class="pdp-form-wrapper">
     <form #f= "ngForm" (ngSubmit)= "login()">
-        <label for="emiail">Email</label>
+        <label for="email">Email</label>
         <input id="email" name="email" required email [(ngModel)]="valEmail" #email= "ngModel">
         <div class="pdp-invalid-field" *ngIf="email.invalid && (email.dirty || email.touched)">
            <p *ngIf="valEmail" >Email inválido</p>
@@ -8,7 +8,7 @@
         </div> 
 
         <label for="contraseña">Contraseña</label>
-        <input type="password" name="password" id="password" requires minlength="3" [(ngModel)]="valPass" #password="ngModel">
+        <input type="password" name="password" id="password" required minlength="3" [(ngModel)]="valPass" #password="ngModel">
         <div class="pdp-invalid-field" *ngIf="password.invalid && (password.dirty || password.touched)">
             <p *ngIf="valPass">La contraseña debe contener al menos 3 caracteres</p>
             <p *ngIf="!valPass">Contraseña no puede ir vacía</p>
