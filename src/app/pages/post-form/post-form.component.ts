@@ -41,23 +41,18 @@ export class PostFormComponent implements OnInit {
       file: this.valPicture
     }
     
-    let newUrl = ""; 
-    await this.pictureService.create(myfile , token).toPromise().then((res: { url: string}) => {
-      newUrl = res.url;
-      console.log('res :', res);
+    let newPictureId = ""; 
+    await this.pictureService.create(myfile , token).toPromise().then((res: { _id: string}) => {
+      newPictureId = res._id;
     });
     
     const body = {
       title: this.valTitle,
       description: this.valDescription,
-      url: newUrl
+      picture: newPictureId
     };
 
-    console.log('body :', body);
-
-    // this.postService.create(this.userId, body, file ,token).subscribe(res => console.log(res));
-    
-    
+    this.postService.create(this.userId, body, token).subscribe(res => console.log(res));
   }
     
 }
