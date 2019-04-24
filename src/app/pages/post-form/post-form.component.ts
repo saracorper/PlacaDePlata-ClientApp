@@ -3,6 +3,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Router, ActivatedRoute } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { PostService } from 'src/app/services/post.service';
+import { PictureService } from 'src/app/services/picture.service';
 
 
 
@@ -13,14 +14,16 @@ import { PostService } from 'src/app/services/post.service';
 })
 
 export class PostFormComponent implements OnInit {
+  
+  public valPicture: File;
 
   public valTitle: string = "";
   public valDescription: string = "";
-  public valPicture: File;
   private userId: string;
 
   constructor(
     private storage: LocalStorageService,
+    private pictureService: PictureService,
     private postService: PostService,
     private route: ActivatedRoute
   ) {}
@@ -29,22 +32,32 @@ export class PostFormComponent implements OnInit {
     this.userId = this.route.snapshot.params.userId;
   }
   
-  public createPost(): void {
+  public async createPost(): Promise<void> {
+    
+    const token = this.storage.read('token') as string;
+    
+    const myfile = {
+      name: "picture",
+      file: this.valPicture
+    }
+    
+    let newUrl = ""; 
+    await this.pictureService.create(myfile , token).toPromise().then((res: { url: string}) => {
+      newUrl = res.url;
+      console.log('res :', res);
+    });
     
     const body = {
       title: this.valTitle,
       description: this.valDescription,
+      url: newUrl
     };
-    
-    const file = {
-      name: 'picture',
-      file: this.valPicture
-    }
-    const token = this.storage.read('token') as string;
+
+    console.log('body :', body);
 
     // this.postService.create(this.userId, body, file ,token).subscribe(res => console.log(res));
     
     
-  };
+  }
     
 }

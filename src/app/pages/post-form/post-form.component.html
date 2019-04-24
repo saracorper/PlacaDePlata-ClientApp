@@ -1,5 +1,5 @@
 <div class="pdp-form-wrapper">
-  <form #f= "ngForm">
+  <form #f="ngForm">
 
     <label for="title">Título</label>
     <input type="text" name= "title" required title [(ngModel)]= valTitle #title= "ngModel">
@@ -16,8 +16,8 @@
     </div>
 
     <label for="picture">Fotografía</label>
-    <input type="file" name="picture" id="picture" (change)="valPicture = $event.target.files[0]">
-    
+    <input type="file" name="picture" id="picture" (change)="valPicture=$event.target.files[0]">     
+
     <button (click)="createPost()" [disabled]="!f.valid">Crear</button>
   </form>
 </div>
