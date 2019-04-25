@@ -13,6 +13,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ToastyModule } from 'ng2-toasty';
 import { PostFormComponent } from './pages/post-form/post-form.component';
 import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
     ActivateAccountComponent,
     GalleryComponent,
     PostFormComponent,
-    PostViewerComponent
+    PostViewerComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

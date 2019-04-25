@@ -6,6 +6,7 @@ import { ActivateAccountComponent } from './pages/activate-account/activate-acco
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { PostFormComponent } from './pages/post-form/post-form.component';
 import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'users/:userId/posts/:id',
     component: PostViewerComponent
+  },
+  {
+    path: 'profile/:userId',
+    component: ProfileComponent
   }
 ];
 
