@@ -1,3 +1,9 @@
-<p>
-  post-viewer works!
-</p>
+<div class="pdp-post-wrapper" *ngIf="post" style="margin-top:15%">
+  <h3>{{post.title}}</h3>
+  <h5>{{post.description}}</h5>
+  <img src={{post.picture?.url}}>
+</div>
+
+<div *ngIf="!post" style="margin-top:15%">
+  <p>El post no existe</p>
+</div>

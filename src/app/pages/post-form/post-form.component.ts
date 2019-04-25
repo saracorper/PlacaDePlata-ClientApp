@@ -20,7 +20,7 @@ export class PostFormComponent implements OnInit {
   public valTitle: string = "";
   public valDescription: string = "";
   private userId: string;
-  public post: Object;
+  
 
   constructor(
     private storage: LocalStorageService,
