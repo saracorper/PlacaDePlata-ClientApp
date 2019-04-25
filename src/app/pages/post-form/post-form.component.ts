@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Router, ActivatedRoute } from "@angular/router";
-import { JwtHelperService } from "@auth0/angular-jwt";
 import { PostService } from 'src/app/services/post.service';
 import { PictureService } from 'src/app/services/picture.service';
+import { ToastyService, ToastyConfig } from 'ng2-toasty';
 
 
 
@@ -20,12 +20,16 @@ export class PostFormComponent implements OnInit {
   public valTitle: string = "";
   public valDescription: string = "";
   private userId: string;
+  public post: Object;
 
   constructor(
     private storage: LocalStorageService,
     private pictureService: PictureService,
     private postService: PostService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastyService: ToastyService,
+    private toastyConfig: ToastyConfig
   ) {}
 
   ngOnInit() {
@@ -44,7 +48,24 @@ export class PostFormComponent implements OnInit {
     let newPictureId = ""; 
     await this.pictureService.create(myfile , token).toPromise().then((res: { _id: string}) => {
       newPictureId = res._id;
+    },
+    error => {
+      let config = {
+        title: 'Error.',
+        msg: 'Imagen no encontrada.',
+        showClose: true,
+        timeout: 3000,
+        theme: 'bootstrap'
+      };
+      if(error.status == 404)
+        this.toastyService.error(config);
+      else{
+        config.msg = "Se ha producido un error inesperado";
+        this.toastyService.error(config);
+      }
+      
     });
+    
     
     const body = {
       title: this.valTitle,
@@ -52,7 +73,27 @@ export class PostFormComponent implements OnInit {
       picture: newPictureId
     };
 
-    this.postService.create(this.userId, body, token).subscribe(res => console.log(res));
+    this.postService
+      .create(this.userId, body, token)
+      .subscribe((post: {_id: string}) =>{
+          this.router.navigateByUrl(`users/${this.userId}/posts/${post._id}`);
+      },
+      error => {
+      let config = {
+        title: 'Error.',
+        msg: 'Credenciales incorrectas.',
+        showClose: true,
+        timeout: 3000,
+        theme: 'bootstrap'
+      };
+      if( error.status == 400)
+        this.toastyService.error(config);
+      else{
+        config.msg = "Se ha producido un error inesperado";
+        this.toastyService.error(config);
+      }
+    });
   }
     
 }
+
