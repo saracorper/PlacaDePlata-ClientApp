@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ActivatedRoute } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -11,9 +10,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class ProfileComponent implements OnInit {
 
+  public user: {
+    fullName: string,
+    email: string
+  }
+
   constructor(private storage: LocalStorageService, 
     private profileService: ProfileService,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -24,10 +27,12 @@ export class ProfileComponent implements OnInit {
     const helper = new JwtHelperService();
     let decoded = helper.decodeToken(token);
 
-    this.profileService.get(decoded.user._id, token).subscribe(res => console.log(res));
-    
+    this.profileService.get(decoded.user._id, token).subscribe(user => {
+      this.user = user;
+    });
   }
-  
-  
-
 }
+
+
+
+

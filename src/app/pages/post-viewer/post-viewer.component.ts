@@ -14,7 +14,10 @@ export class PostViewerComponent implements OnInit {
   public postId: string;
   public post: IPost;
 
-  constructor(private postService: PostService, private route: ActivatedRoute, private storage: LocalStorageService) { }
+  constructor(private postService: PostService,
+    private route: ActivatedRoute, 
+    private storage: LocalStorageService
+  ) { }
 
   ngOnInit() {
 
