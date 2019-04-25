@@ -40,5 +40,13 @@ interface IPost {
   _id: string,
   title: string, 
   description: string, 
-  picture: IPicture
+  picture: IPicture,
+  author: IUser
+
+}
+
+interface IUser {
+  _id: string,
+  fullName: string,
+  email: string
 }
