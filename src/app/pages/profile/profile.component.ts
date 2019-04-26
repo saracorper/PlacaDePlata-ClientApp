@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { ProfileService } from 'src/app/services/profile.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserService } from 'src/app/services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'pdp-profile',
@@ -16,18 +16,17 @@ export class ProfileComponent implements OnInit {
   }
 
   constructor(private storage: LocalStorageService, 
-    private profileService: ProfileService,
+    private userService: UserService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
 
     let token = this.storage.read("token") as string;
-    console.log(token);
 
-    const helper = new JwtHelperService();
-    let decoded = helper.decodeToken(token);
+    let userId = this.route.snapshot.params.userId;
 
-    this.profileService.get(decoded.user._id, token).subscribe(user => {
+    this.userService.get(userId, token).subscribe(user => {
       this.user = user;
     });
   }

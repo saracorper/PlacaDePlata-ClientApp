@@ -26,4 +26,12 @@ export class UserService {
     return this.http.post("http://localhost:3000/api/users", user);
   }
 
+  public get(id: string, token: string): Observable <any> {
+
+    const header = new HttpHeaders({
+      JWTtoken: token
+    });
+
+    return this.http.get(`http://localhost:3000/api/users/${id}`, { headers: header });
+  }
 }
