@@ -14,6 +14,7 @@ import { ToastyModule } from 'ng2-toasty';
 import { PostFormComponent } from './pages/post-form/post-form.component';
 import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileFormComponent } from './pages/profile-form/profile-form.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     GalleryComponent,
     PostFormComponent,
     PostViewerComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileFormComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class UserService {
 
   }
 
-  public update(id: string, user: { fullName?: string, confirmAt?: Date }, token: string): Observable <any> {
+  public update(id: string, user: { fullName?: string, confirmAt?: Date, email?: string }, token: string): Observable <any> {
 
     let header = new HttpHeaders({
       'JWTtoken': token

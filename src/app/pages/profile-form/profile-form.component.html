@@ -1,0 +1,23 @@
+<div class="pdp-form-wrapper" style="margin-top:10%;">
+  <form #f="ngForm" (ngSubmit)="edit()">
+
+    <label for="fullName">Nombre Completo</label>
+    <input type="text" name="fullName" required [(ngModel)]=valFullName #fullName="ngModel">
+    <div class="pdp-invalied-field" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+      <p *ngIf="!valFullName">El título no puede ir vacío</p>
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" minlength="3" [(ngModel)]="valEmail" #email="ngModel">
+    <div class="pdp-invalid-field" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <p *ngIf="valEmail">Email inválido</p>
+      <p *ngIf="!valEmail">Email no puede ir vacío</p>
+    </div>
+
+    <label for="avatar">Avatar</label>
+    <input type="file" name="avatar" id="avatar" (change)="avater=$event.target.files[0]">
+
+
+    <button type="submit" [disabled]="!f.valid">Actualizar</button>
+  </form>
+</div>
