@@ -1,6 +1,9 @@
 <ng2-toasty [position]="'top-right'"></ng2-toasty>
 <div class="pdp-navbar">
-    <a>Placa de Plata</a>
+    <a [routerLink]="['gallery']">Placa de Plata</a>
+
+    <a class="pcp-to-right" *ngIf="user" [routerLink]="['profile', user._id]">{{user.fullName}}</a>
+    <a class="pcp-to-right" *ngIf="!user" [routerLink]="['login']">Acceso</a>
 </div>
     
 <router-outlet></router-outlet>

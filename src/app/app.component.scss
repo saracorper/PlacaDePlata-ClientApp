@@ -6,6 +6,7 @@
     width: 100%;
 }
 
+
 .pdp-navbar a {
     float: left;
     display: block;
@@ -15,9 +16,16 @@
     text-decoration: none;
     font-size: 1.2em;
     cursor: pointer;
+
 }
 
 .pdp-navbar a:hover {
     background: #ddd;
     color: black;
 }
+
+.pcp-to-right {
+    float: right !important;
+}
+
+
