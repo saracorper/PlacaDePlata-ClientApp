@@ -15,13 +15,15 @@ export class ProfileFormComponent implements OnInit {
   public valEmail: string;
   public avatar: File;
 
-  constructor(private userService: UserService, private store: LocalStorageService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, 
+    private store: LocalStorageService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
       this.userId = this.route.snapshot.params.id;
   }
 
-  public async edit(): Promise<void> {
+  public async updateProfile(): Promise<void> {
 
     let token = this.store.read('token') as string;
     

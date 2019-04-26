@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'pdp-profile',
@@ -17,7 +17,9 @@ export class ProfileComponent implements OnInit {
 
   constructor(private storage: LocalStorageService, 
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
+    
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,13 @@ export class ProfileComponent implements OnInit {
     this.userService.get(userId, token).subscribe(user => {
       this.user = user;
     });
+  }
+
+  public edit(){
+
+    let id = this.route.snapshot.params.userId;
+    
+    this.router.navigateByUrl(`profile/${id}/edit`);
   }
 }
 

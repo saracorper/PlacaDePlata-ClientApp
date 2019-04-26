@@ -1,5 +1,5 @@
 <div class="pdp-form-wrapper" style="margin-top:10%;">
-  <form #f="ngForm" (ngSubmit)="edit()">
+  <form #f="ngForm" (ngSubmit)="updateProfile()">
 
     <label for="fullName">Nombre Completo</label>
     <input type="text" name="fullName" required [(ngModel)]=valFullName #fullName="ngModel">
@@ -16,7 +16,6 @@
 
     <label for="avatar">Avatar</label>
     <input type="file" name="avatar" id="avatar" (change)="avater=$event.target.files[0]">
-
 
     <button type="submit" [disabled]="!f.valid">Actualizar</button>
   </form>

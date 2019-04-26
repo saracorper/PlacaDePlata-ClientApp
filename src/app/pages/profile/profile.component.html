@@ -1,6 +1,8 @@
 <div class="pdp-profile-wrapper" *ngIf="user" style="margin-top:15%">
   <h4>{{user.fullName}}</h4>
   <h4>{{user.email}}</h4>
+
+  <button (click)="edit()">Editar</button>
 </div>
 
 <div *ngIf="!user" style="margin-top:15%">
