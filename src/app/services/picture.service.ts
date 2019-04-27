@@ -6,19 +6,27 @@ import { Observable } from 'rxjs';
   providedIn: "root"
 })
 export class PictureService {
+
   constructor(private http: HttpClient) {}
+
 
   public create(file:{ name:string, file: File }, token: string): Observable<any> {
     
-    const header = new HttpHeaders({
-      JWTtoken: token
-    });
+    const header = new HttpHeaders({ JWTtoken: token });
 
     let formData = new FormData();
     formData.append(file.name, file.file);  
 
-    return this.http.post("http://localhost:3000/api/pictures", formData, {
-      headers: header
-    });
+    return this.http.post("http://localhost:3000/api/pictures", formData, { headers: header });
+  }
+
+  public update(id: string, file:{ name:string, file: File }, token: string): Observable<any> {
+    
+    const header = new HttpHeaders({ JWTtoken: token });
+
+    let formData = new FormData();
+    formData.append(file.name, file.file);  
+
+    return this.http.put(`http://localhost:3000/api/pictures/${id}`, formData, { headers: header });
   }
 }

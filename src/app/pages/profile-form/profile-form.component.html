@@ -15,7 +15,8 @@
     </div>
 
     <label for="avatar">Avatar</label>
-    <input type="file" name="avatar" id="avatar" (change)="avater=$event.target.files[0]">
+    <img src={{valAvatar}}>
+    <input type="file" name="avatar" id="avatar" (change)="avatar=$event.target.files[0]">
 
     <button type="submit" [disabled]="!f.valid">Actualizar</button>
   </form>
