@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PictureService } from 'src/app/services/picture.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class ProfileFormComponent implements OnInit {
   constructor(private userService: UserService, 
     private store: LocalStorageService,
     private route: ActivatedRoute,
-    private pictureService: PictureService) { }
+    private pictureService: PictureService,
+    private router: Router) { }
 
   ngOnInit() {
       this.userId = this.route.snapshot.params.id;
@@ -56,7 +57,7 @@ export class ProfileFormComponent implements OnInit {
       avatar: newPicture._id
     };
 
-    this.userService.update(this.userId, body, token).subscribe(res => console.log('res :', res));
+    this.userService.update(this.userId, body, token).subscribe(res => this.router.navigateByUrl(`profile/${this.userId}`));
   }
 }
 

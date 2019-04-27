@@ -12,7 +12,10 @@ export class ProfileComponent implements OnInit {
 
   public user: {
     fullName: string,
-    email: string
+    email: string,
+    avatar: {
+      url: string
+    }
   }
 
   constructor(private storage: LocalStorageService, 
@@ -28,9 +31,7 @@ export class ProfileComponent implements OnInit {
 
     let userId = this.route.snapshot.params.userId;
 
-    this.userService.get(userId, token).subscribe(user => {
-      this.user = user;
-    });
+    this.userService.get(userId, token).subscribe(user => this.user = user);
   }
 
   public edit(){
