@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'pdp-root',
@@ -9,18 +10,19 @@ import { LocalStorageService } from './services/local-storage.service';
 })
 export class AppComponent implements OnInit{
 
-  public user: { 
-    _id: string,
-    fullName: string
-  };
+  public user: IUser;
 
-  constructor(private userService: UserService, private storage: LocalStorageService) {}
-
-  
-  
+  constructor(private loginService: LoginService) {}
+ 
   ngOnInit(): void {
     
-    // this.userService.get()
+    let onUserLogged = this.loginService.getOnLogged();
+
+    onUserLogged.subscribe(user => this.user = user);
   }
 }
 
+interface IUser {
+  _id: string,
+  fullName: string
+}

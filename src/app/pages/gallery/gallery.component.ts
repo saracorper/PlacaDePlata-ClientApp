@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Router } from '@angular/router';
 
