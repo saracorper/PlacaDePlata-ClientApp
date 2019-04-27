@@ -44,26 +44,30 @@ export class ActivateAccountComponent implements OnInit {
         this.invalidToken = true;
       }
 
-      this.userService.update(decoded.user._id, userBody, token).subscribe(user => {
-        this.loginService.emitOnLogged(user);
-        this.storage.save('token',token);
-        this.router.navigateByUrl('gallery');
-      },
-      error => {
-        let config = {
-          title: 'Error.',
-          msg: 'Expirado el tiempo de activación.',
-          showClose: true,
-          timeout: 3000,
-          theme: 'bootstrap'
-        };
-        if (error.status == 401)
-          this.toastyService.error(config);
-        else {
-          config.msg = "Se ha producido un error inesperado";
-          this.toastyService.error(config);
-        }
-      }) 
+      this.userService.update(decoded.user._id, userBody, token).subscribe(
+        user => {
+          this.loginService.emitOnLogged(user);
+          this.storage.save('token',token);
+          this.router.navigateByUrl('gallery');
+        },
+        error => {
+          let config = {
+            title: 'Error.',
+            msg: 'Expirado el tiempo de activación.',
+            showClose: true,
+            timeout: 3000,
+            theme: 'bootstrap'
+          };
+          
+          if (error.status == 401 || error.status == 404) {
+            this.activating = false;
+            this.invalidToken = true;
+            this.toastyService.error(config);
+          } else {
+            config.msg = "Se ha producido un error inesperado";
+            this.toastyService.error(config);
+          }
+        }) 
     });
   }
 
