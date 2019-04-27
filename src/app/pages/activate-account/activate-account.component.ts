@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ToastyService, ToastyConfig } from 'ng2-toasty';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'pdp-activate-account',
@@ -19,8 +20,9 @@ export class ActivateAccountComponent implements OnInit {
      private userService: UserService,
      private router: Router,
      private storage: LocalStorageService,
-    private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
+     private toastyService: ToastyService,
+     private toastyConfig: ToastyConfig,
+     private loginService: LoginService
     ) { }
 
   ngOnInit() {
@@ -43,7 +45,7 @@ export class ActivateAccountComponent implements OnInit {
       }
 
       this.userService.update(decoded.user._id, userBody, token).subscribe(user => {
-        console.log('updated user:  ', user);
+        this.loginService.emitOnLogged(user);
         this.storage.save('token',token);
         this.router.navigateByUrl('gallery');
       },
@@ -61,7 +63,7 @@ export class ActivateAccountComponent implements OnInit {
           config.msg = "Se ha producido un error inesperado";
           this.toastyService.error(config);
         }
-      }) //revisar
+      }) 
     });
   }
 

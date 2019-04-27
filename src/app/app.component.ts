@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     
     let onUserLogged = this.loginService.getOnLogged();
-    onUserLogged.subscribe(user => this.user = user);
+    onUserLogged.subscribe(user => this.user = user as IUser);
 
     const token = this.storage.read('token') as string;
 
@@ -32,5 +32,6 @@ export class AppComponent implements OnInit{
 
 interface IUser {
   _id: string,
-  fullName: string
+  fullName: string,
+  email: string
 }
