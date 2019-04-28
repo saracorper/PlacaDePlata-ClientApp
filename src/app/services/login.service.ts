@@ -24,6 +24,11 @@ export class LoginService {
 
     this.onLoggedSub.next(user);
   }
+
+  public refreshActivationLink(body: {email: string}): Observable<any> {
+    
+    return this.http.post('http://localhost:3000/api/login/refresh-link', body);
+  } 
 }
 
 interface IUser {

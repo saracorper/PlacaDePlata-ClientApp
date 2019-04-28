@@ -15,6 +15,9 @@ export class ActivateAccountComponent implements OnInit {
 
   public activating: boolean = true;
   public invalidToken: boolean = false;
+  public sentNewLink: boolean = false;
+
+  private user: { email: string };
 
   constructor(private route: ActivatedRoute,
      private userService: UserService,
@@ -44,6 +47,8 @@ export class ActivateAccountComponent implements OnInit {
         this.invalidToken = true;
       }
 
+      this.user = decoded.user;
+
       this.userService.update(decoded.user._id, userBody, token).subscribe(
         user => {
           this.loginService.emitOnLogged(user);
@@ -71,4 +76,13 @@ export class ActivateAccountComponent implements OnInit {
     });
   }
 
+
+  public refreshLink(): void {
+
+    let body = { email : this.user.email }
+
+    this.loginService.refreshActivationLink(body).subscribe(() => {
+      this.sentNewLink = true;
+    })
+  }
 }
