@@ -1,25 +1,61 @@
 html, body {
     width: 100%;
     text-align: center;
-    background-color: #CCE5FF;
     padding: 0;
     margin: 0;
 }
 
+label {
+    display: block;
+    margin: 20px;
+    margin-bottom: 10px 
+}
+
 input {
-    width: 98%;
+    width: 96%;
+    border-radius: 5px;
+    outline: none;
+    padding: 2%;
+}
+
+button {
+    padding: 1%;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+button.pdp-ok {
+    background-color: #D4EDDA;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+button:hover:disabled {
+    cursor: not-allowed;
+}
+
+button:disabled {
+    background-color: #B8BABC;
 }
 
 .pdp-form-wrapper {
     margin-top: 10%;
-    width: 40%;
+    width: 50%;
     padding: 2%;
     display: inline-block;
     background-color: white;
+    border-radius: 20px 0 20px 20px;
 }
 
 .pdp-invalid-field {
     width: 96%;
     padding: 2%;
     background-color: #F8D7DA;
+    border: solid 2px #8E444B;
+    border-radius: 5px;
 }

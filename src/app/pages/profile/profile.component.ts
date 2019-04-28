@@ -11,12 +11,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   public user: {
+    _id: string,
     fullName: string,
     email: string,
     avatar: {
       url: string
     }
   }
+  
 
   constructor(private storage: LocalStorageService, 
     private userService: UserService,
@@ -34,11 +36,15 @@ export class ProfileComponent implements OnInit {
     this.userService.get(userId, token).subscribe(user => this.user = user);
   }
 
-  public edit(){
+  public edit(): void{
 
     let id = this.route.snapshot.params.userId;
     
     this.router.navigateByUrl(`profile/${id}/edit`);
+  }
+
+  public createPost() {
+    this.router.navigateByUrl(`users/${this.user._id}/posts/new`);
   }
 }
 

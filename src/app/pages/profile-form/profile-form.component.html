@@ -3,7 +3,7 @@
 
     <label for="fullName">Nombre Completo</label>
     <input type="text" name="fullName" required [(ngModel)]=valFullName #fullName="ngModel">
-    <div class="pdp-invalied-field" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
+    <div class="pdp-invalid-field" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">
       <p *ngIf="!valFullName">El título no puede ir vacío</p>
     </div>
 

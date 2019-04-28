@@ -1,11 +1,18 @@
 .pdp-post-wrapper {
-    width: 25%;
+    width: 20%;
+    height: 300px;
     display: inline-block;
-    margin:2%;
-    background-color: white;
+    margin:1%;
     padding: 1%;
+    background-color: white;
+    border-radius: 20px 0 20px 20px;
 }
+
+.pdp-post-wrapper:hover {
+    transform: scale(1.1);
+} 
 
 img {
     max-width: 200px;
+    height: 180px;
 }

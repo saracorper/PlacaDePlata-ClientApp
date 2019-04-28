@@ -1,9 +1,19 @@
-<div class="pdp-profile-wrapper" *ngIf="user" style="margin-top:15%">
-  <h4>{{user.fullName}}</h4>
-  <h4>{{user.email}}</h4>
-  <img src={{user.avatar?.url}}>
+<div class="pdp-profile-wrapper" *ngIf="user">
 
-  <button (click)="edit()">Editar</button>
+  <div class="pdp-profile-half"> 
+    <img src={{user.avatar?.url}}>
+  </div>
+  <div class="pdp-profile-half" style="text-align:left;">
+      <h3>Nombre</h3>
+      <label>{{user.fullName}}</label>
+      <h3>Email</h3>
+      <label>{{user.email}}</label>
+  </div>
+
+  <div style="float:left;width:100%;">
+      <button (click)="createPost()">Crear Post</button>
+      <button (click)="edit()" class="pdp-ok">Editar</button>
+  </div>
 </div>
 
 <div *ngIf="!user" style="margin-top:15%">

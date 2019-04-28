@@ -1,11 +1,16 @@
-<div class="pdp-post-wrapper" *ngIf="post" style="margin-top:15%">
-  <h3>{{post.title}}</h3>
-  <h5>{{post.description}}</h5>
-  <img src={{post.picture?.url}}>
+<div class="pdp-post-wrapper" *ngIf="post" style="margin-top:5%">
 
-  <h3>Autor</h3>
-  <h4> {{ post.author.fullName }} </h4>
-  <h4> {{ post.author.email }} </h4>
+  <div class="pdp-profile-half">
+    <h3>{{post.title}}</h3>
+    <h5>{{post.description}}</h5>
+    <img src={{post.picture?.url}}>
+  </div>
+
+  <div class="pdp-profile-half">
+    <h3>Autor</h3>
+    <h4> {{ post.author.fullName }} </h4>
+    <h4> {{ post.author.email }} </h4>
+  </div>
 </div>
 
 <div *ngIf="!post" style="margin-top:15%">

@@ -3,7 +3,7 @@
 
     <label for="title">Título</label>
     <input type="text" name= "title" required title [(ngModel)]= valTitle #title= "ngModel">
-    <div class="pdp-invalied-field" *ngIf="title.invalid && (title.dirty || title.touched)">
+    <div class="pdp-invalid-field" *ngIf="title.invalid && (title.dirty || title.touched)">
       <p *ngIf="valTitle">Título inválido</p>
       <p *ngIf="!valTitle">El título no puede ir vacío</p>
     </div>
@@ -11,8 +11,8 @@
     <label for="description">Descripción</label>
     <input id="description" name="description"  minlength="3" [(ngModel)]="valDescription" #description="ngModel">
     <div class="pdp-invalid-field" *ngIf="description.invalid && (description.dirty || description.touched)">
-      <p *ngIf="valDescription">Description inválido</p>
-      <p *ngIf="!valDescription">Description no puede ir vacío</p>
+      <p *ngIf="valDescription">Descripción debe tener al menos 3 caracteres</p>
+      <p *ngIf="!valDescription">Descripción no puede ir vacío</p>
     </div>
 
     <label for="picture">Fotografía</label>

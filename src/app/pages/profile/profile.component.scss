@@ -1,7 +1,32 @@
 .pdp-profile-wrapper {
-    width: 25%;
+    width: 60%;
     display: inline-block;
-    margin: 2%;
     background-color: white;
-    padding: 1%;
+    padding: 2%;
+    margin-top:15%;
+    border-radius: 20px 0 20px 20px;
 }
+
+.pdp-profile-half {
+    width: 50%;
+    float: left;
+}
+
+.pdp-avatar {
+    border-radius: 10%;
+    padding: 2%;
+    background-color: black;
+}
+
+img {
+    border-radius: 10%;
+}
+
+label {
+    margin-left: 0;
+}
+
+button {
+    margin: 1%;
+}
+
