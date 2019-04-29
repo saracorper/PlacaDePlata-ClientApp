@@ -8,6 +8,7 @@ import { PostFormComponent } from './pages/post-form/post-form.component';
 import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileFormComponent } from './pages/profile-form/profile-form.component';
+import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path:'profile/:id/edit',
     component: ProfileFormComponent
+  },
+  {
+    path: 'not-authorized',
+    component: NotAuthorizedComponent
   }
 ];
 
