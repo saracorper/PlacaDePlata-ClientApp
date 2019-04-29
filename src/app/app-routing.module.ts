@@ -9,6 +9,7 @@ import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileFormComponent } from './pages/profile-form/profile-form.component';
 import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
+import { AuthGuard } from './guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
   },
   {
     path:'gallery',
-    component: GalleryComponent
+    component: GalleryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'users/:userId/posts/new',
