@@ -10,48 +10,53 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileFormComponent } from './pages/profile-form/profile-form.component';
 import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 import { AuthGuard } from './guards/auth-guard.service';
+import { OwnerGuard } from './guards/owner-guard.service';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "login",
+    pathMatch: "full"
   },
   {
-    path: 'login',
+    path: "login",
     component: LoginComponent
   },
   {
-    path: 'register',
+    path: "register",
     component: RegisterComponent
   },
   {
-    path: 'activate-account',
+    path: "activate-account",
     component: ActivateAccountComponent
   },
   {
-    path:'gallery',
+    path: "gallery",
     component: GalleryComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'users/:userId/posts/new',
-    component: PostFormComponent
+    path: "users/:userId/posts/new",
+    component: PostFormComponent,
+    canActivate: [AuthGuard, OwnerGuard]
   },
   {
-    path: 'users/:userId/posts/:id',
-    component: PostViewerComponent
+    path: "users/:userId/posts/:id",
+    component: PostViewerComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'profile/:userId',
-    component: ProfileComponent
+    path: "profile/:userId",
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'profile/:id/edit',
-    component: ProfileFormComponent
+    path: "profile/:userId/edit",
+    component: ProfileFormComponent,
+    canActivate: [AuthGuard, OwnerGuard]
   },
   {
-    path: 'not-authorized',
+    path: "not-authorized",
     component: NotAuthorizedComponent
   }
 ];
