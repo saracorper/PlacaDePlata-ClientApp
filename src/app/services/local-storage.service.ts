@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +12,23 @@ export class LocalStorageService {
   
 
   public save(key: string, value: string | boolean | number ):void {
-    console.log('argumentos: ',key, value);
+
     this.storage.set(key, value);
     this.data[key]= value;
-
   }
 
   public read(key: string): string | boolean | number {
 
-    let value =this.data[key];
+    let value = this.data[key];
 
     return value || this.storage.get(key);
   }
+
+  public delete(key: string): void{
+
+    this.storage.remove(key);
+    this.data = this.data.filter(i => i !== key);
+  }
 }
+
+
