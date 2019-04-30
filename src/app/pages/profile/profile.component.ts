@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'pdp-profile',
@@ -45,6 +46,24 @@ export class ProfileComponent implements OnInit {
 
   public createPost() {
     this.router.navigateByUrl(`users/${this.user._id}/posts/new`);
+  }
+
+  public deleteAccount(): void {
+    let token = this.storage.read("token") as string;
+
+    if (confirm('¿Estás seguro? Si aceptas borrarás tu cuenta'))
+      this.userService.delete(this.user._id, token).subscribe(() => this.router.navigateByUrl('login'))
+  }
+
+  public isOwner(): boolean {
+    let helper = new JwtHelperService();
+
+    let token = this.storage.read("token") as string;
+    let decoded = helper.decodeToken(token);
+
+    if(!decoded || !decoded.user) return false;
+    
+    return this.user._id === decoded.user._id;
   }
 }
 

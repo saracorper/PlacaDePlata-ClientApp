@@ -35,6 +35,10 @@ button.pdp-ok {
     background-color: #D4EDDA;
 }
 
+button.pdp-danger {
+    background-color: #F8D7DA;
+}
+
 button:hover {
     cursor: pointer;
     transform: scale(1.2);

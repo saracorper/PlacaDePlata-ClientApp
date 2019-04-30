@@ -26,9 +26,9 @@ export class RegisterComponent implements OnInit {
 
     let configSuccess = {
       title: "Registro",
-      msg: "Usuario registrado con éxito",
+      msg: "Usuario registrado con éxito. Por favor, revise su email",
       showClose: true,
-      timeout: 3000,
+      timeout: 4000,
       theme: "bootstrap"
     };
 

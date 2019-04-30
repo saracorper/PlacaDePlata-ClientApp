@@ -34,4 +34,13 @@ export class UserService {
 
     return this.http.get(`http://localhost:3000/api/users/${id}`, { headers: header });
   }
+
+  public delete(id: string, token: string): Observable <any> {
+
+    const header = new HttpHeaders({
+      JWTtoken: token
+    });
+
+    return this.http.delete(`http://localhost:3000/api/users/${id}`, { headers: header });
+  }
 }

@@ -11,8 +11,9 @@
   </div>
 
   <div style="float:left;width:100%;">
-      <button (click)="createPost()">Crear Post</button>
-      <button (click)="edit()" class="pdp-ok">Editar</button>
+      <button *ngIf="isOwner()" (click)="createPost()">Crear Post</button>
+      <button *ngIf="isOwner()" (click)="edit()" class="pdp-ok">Editar</button>
+      <button *ngIf="isOwner()" (click)="deleteAccount()" class="pdp-danger">Borrar cuenta</button>
   </div>
 </div>
 
