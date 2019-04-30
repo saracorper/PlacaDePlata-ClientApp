@@ -30,3 +30,15 @@ button {
     margin: 1%;
 }
 
+
+@media (max-width: 1100px) {
+    .pdp-profile-wrapper {
+        width: 75%;
+    }
+}
+
+@media (max-width: 650px) {
+    .pdp-profile-wrapper {
+        width: 90%;
+    }
+}

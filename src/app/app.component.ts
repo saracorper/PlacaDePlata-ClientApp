@@ -38,9 +38,12 @@ export class AppComponent implements OnInit{
 
   public logout(): void {
 
-    this.storage.delete('token');
-    this.loginService.emitOnLogged(null);
-    this.router.navigateByUrl('login');
+    if(confirm('¿Quiere cerrar su sesión?'))
+    {
+      this.storage.delete('token');
+      this.loginService.emitOnLogged(null);
+      this.router.navigateByUrl('login');
+    }
   }
 }
 

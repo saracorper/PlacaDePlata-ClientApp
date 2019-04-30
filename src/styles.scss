@@ -5,6 +5,11 @@ html, body {
     margin: 0;
 }
 
+body {
+    background: url('./assets/colores.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+
 label {
     display: block;
     margin: 20px;
@@ -58,4 +63,39 @@ button:disabled {
     background-color: #F8D7DA;
     border: solid 2px #8E444B;
     border-radius: 5px;
+}
+
+.pdp-post-wrapper {
+    width: 20%;
+    height: 300px;
+    display: inline-block;
+    margin: 1%;
+    padding: 1%;
+    background-color: white;
+    border-radius: 20px 0 20px 20px;
+}
+
+.pdp-post-wrapper:hover {
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 1100px) {
+    .pdp-post-wrapper {
+        width: 40%;
+    }
+
+    .pdp-form-wrapper {
+        width: 70%;
+    }
+}
+
+@media (max-width: 650px) {
+    .pdp-post-wrapper {
+        width: 85%;
+    }
+
+    .pdp-form-wrapper {
+        width: 90%;
+    }
 }
