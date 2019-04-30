@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class PostViewerComponent implements OnInit {
 
   constructor(private postService: PostService,
     private route: ActivatedRoute, 
-    private storage: LocalStorageService
+    private storage: LocalStorageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,11 +28,13 @@ export class PostViewerComponent implements OnInit {
     const token = this.storage.read('token') as string;
 
     this.postService.get(this.userId, this.postId, token).subscribe((res: IPost) => {
-      console.log(res);
       this.post = res;
     });
   }
 
+  public viewProfile(): void {
+    this.router.navigateByUrl(`profile/${this.userId}`)
+  }
 }
 
 interface IPicture {
