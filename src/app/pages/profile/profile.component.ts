@@ -17,8 +17,16 @@ export class ProfileComponent implements OnInit {
     email: string,
     avatar: {
       url: string
-    }
-  }
+    },
+    posts: [{
+      _id: string,
+      title: string,
+      description: string,
+      picture: {
+        url: string
+      }
+    }]
+  };
   
 
   constructor(private storage: LocalStorageService, 
@@ -64,6 +72,10 @@ export class ProfileComponent implements OnInit {
     if(!decoded || !decoded.user) return false;
     
     return this.user._id === decoded.user._id;
+  }
+
+  public viewDetail(id: string, author: string): void {
+    this.router.navigateByUrl(`/users/${author}/posts/${id}`);
   }
 }
 

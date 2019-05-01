@@ -17,6 +17,10 @@
   </div>
 </div>
 
+<div style="width: 100%;">
+  <pdp-post-item *ngFor="let post of user.posts" [post]="post" (onItemClick)="viewDetail($event.id, $event.author)"></pdp-post-item>
+</div>
+
 <div *ngIf="!user" style="margin-top:15%">
   <p>El usuario no existe</p>
 </div>
