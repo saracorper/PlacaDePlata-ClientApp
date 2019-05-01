@@ -28,7 +28,7 @@ export class ProfileFormComponent implements OnInit {
     private loginService: LoginService) { }
 
   ngOnInit() {
-      this.userId = this.route.snapshot.params.id;
+      this.userId = this.route.snapshot.params.userId;
       let token = this.store.read('token') as string;
 
       this.userService.get(this.userId, token).subscribe((user: IUser) => {
