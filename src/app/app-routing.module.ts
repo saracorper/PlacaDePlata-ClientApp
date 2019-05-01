@@ -7,10 +7,12 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 import { PostFormComponent } from './pages/post-form/post-form.component';
 import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { ProfileFormComponent } from './pages/profile-form/profile-form.component';
+import { ProfileFormComponent } from './pages/profile/profile-form/profile-form.component';
 import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { OwnerGuard } from './guards/owner-guard.service';
+import { ProfileRoutingModule } from './pages/profile/profile-routing.module';
+import { ProfileModule } from './pages/profile/profile.module';
 
 const routes: Routes = [
   {
@@ -46,14 +48,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "profile/:userId",
-    component: ProfileComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: "profile/:userId/edit",
-    component: ProfileFormComponent,
-    canActivate: [AuthGuard, OwnerGuard]
+    path: "profile",
+    loadChildren: () => ProfileModule
   },
   {
     path: "not-authorized",

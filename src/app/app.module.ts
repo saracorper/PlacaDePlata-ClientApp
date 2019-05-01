@@ -13,10 +13,9 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ToastyModule } from 'ng2-toasty';
 import { PostFormComponent } from './pages/post-form/post-form.component';
 import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ProfileFormComponent } from './pages/profile-form/profile-form.component';
 import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
-import { PostItemComponent } from './presenters/post-item/post-item.component';
+import { ProfileModule } from './pages/profile/profile.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -28,10 +27,7 @@ import { PostItemComponent } from './presenters/post-item/post-item.component';
     GalleryComponent,
     PostFormComponent,
     PostViewerComponent,
-    ProfileComponent,
-    ProfileFormComponent,
-    NotAuthorizedComponent,
-    PostItemComponent
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +35,9 @@ import { PostItemComponent } from './presenters/post-item/post-item.component';
     HttpClientModule,
     StorageServiceModule,
     FormsModule,
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    SharedModule,
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
