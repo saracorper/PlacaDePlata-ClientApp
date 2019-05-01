@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { WebStorageService, LOCAL_STORAGE } from 'angular-webstorage-service';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

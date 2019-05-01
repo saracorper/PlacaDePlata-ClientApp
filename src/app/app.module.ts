@@ -16,6 +16,7 @@ import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileFormComponent } from './pages/profile-form/profile-form.component';
 import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
+import { PostItemComponent } from './presenters/post-item/post-item.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.co
     PostViewerComponent,
     ProfileComponent,
     ProfileFormComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    PostItemComponent
   ],
   imports: [
     BrowserModule,
