@@ -1,26 +1,32 @@
-<div class="pdp-profile-wrapper" *ngIf="user">
+<div class="container">
 
-  <div class="pdp-profile-half"> 
-    <img src={{user.avatar?.url}}>
-  </div>
-  <div class="pdp-profile-half" style="text-align:left;">
-      <h3>Nombre</h3>
-      <label>{{user.fullName}}</label>
-      <h3>Email</h3>
-      <label>{{user.email}}</label>
-  </div>
-
-  <div style="float:left;width:100%;">
+  <div class="pdp-profile-wrapper" *ngIf="user">
+    <div class="info-perfil">
+      <div>
+        <img class= "pdp-avatar" src={{user.avatar?.url}}>
+      </div>
+      <div>
+        <h3>Nombre</h3>
+        <label>{{user.fullName}}</label>
+        <h3>Email</h3>
+        <label>{{user.email}}</label>
+      </div>
+    </div>
+    <div>
       <button *ngIf="isOwner()" (click)="createPost()">Crear Post</button>
       <button *ngIf="isOwner()" (click)="edit()" class="pdp-ok">Editar</button>
       <button *ngIf="isOwner()" (click)="deleteAccount()" class="pdp-danger">Borrar cuenta</button>
+    </div>
   </div>
+  
+  <div class="posts">
+    <pdp-post-item class="item" *ngFor="let post of user?.posts" [post]="post" (onItemClick)="viewDetail($event.id, $event.author)"></pdp-post-item>
+  </div>
+  
+  <div *ngIf="!user" style="margin-top:15%">
+      <p>El usuario no existe</p>
+    </div>
 </div>
-
-<div style="width: 100%;">
-  <pdp-post-item *ngFor="let post of user?.posts" [post]="post" (onItemClick)="viewDetail($event.id, $event.author)"></pdp-post-item>
-</div>
-
-<div *ngIf="!user" style="margin-top:15%">
-  <p>El usuario no existe</p>
-</div>
+    
+  
+  <!-- style="width: 100%" -->
