@@ -1,8 +1,10 @@
 <div class="pdp-form-wrapper" style="margin-top: 10vh">
+  <h1>Nuevo Post</h1>
+
   <form #f="ngForm">
 
     <label for="title">Título</label>
-    <input type="text" name= "title" required title [(ngModel)]= valTitle #title= "ngModel">
+    <input type="text" name= "title" required [(ngModel)]="valTitle" #title= "ngModel">
     <div class="pdp-invalid-field" *ngIf="title.invalid && (title.dirty || title.touched)">
       <p *ngIf="valTitle">Título inválido</p>
       <p *ngIf="!valTitle">El título no puede ir vacío</p>
@@ -15,9 +17,12 @@
       <p *ngIf="!valDescription">Descripción no puede ir vacío</p>
     </div>
 
-    <label for="picture">Fotografía</label>
-    <input type="file" name="picture" id="picture" (change)="valPicture=$event.target.files[0]">     
+     <label for="picture">Fotografía</label>
+     <input type="file" name="picture" id="picture" required (change)="valPicture=$event.target.files[0]">
+     <div class="pdp-invalid-field" *ngIf="!valPicture">
+       <p>La imagen no puede ir vacía</p>
+     </div>
 
-    <button (click)="createPost()" [disabled]="!f.valid">Crear</button>
+     <button (click)="createPost()" [disabled]="!f.valid || !valPicture">Crear</button>
   </form>
 </div>

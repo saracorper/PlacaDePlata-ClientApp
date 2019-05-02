@@ -94,6 +94,5 @@ export class PostFormComponent implements OnInit {
       }
     });
   }
-    
 }
 
