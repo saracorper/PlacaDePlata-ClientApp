@@ -1,21 +1,18 @@
 .pdp-post-wrapper {
-    width: 60%;
-    // max-width: 60vh;
-    height: auto;
+    width: 70%;
+    margin-top: 20vh;
+    margin-left: 10%;
+    padding: 2%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    flex-basis: auto;
-    margin-left: 20%;
-    margin-top: 20vh;
+    flex-wrap: wrap;
 }
 
 .item {
     align-self: auto;
     justify-content: space-evenly;
-    flex-direction: column;
-    flex-basis: auto;
-    
+    flex-direction: column; 
 }
 
 
@@ -33,12 +30,5 @@
     .pdp-post-wrapper {
         width: 80%;
     }
-
-    .pdp-profile-half {
-        width: 100%;
-    }
-}
-
-@media (max-width: 650px) {  
 }
 

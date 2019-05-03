@@ -1,12 +1,11 @@
 <div class="pdp-post-wrapper" *ngIf="post" >
-
   <div class="item">
     <h3>{{post.title}}</h3>
     <h5>{{post.description}}</h5>
     <img src={{post.picture?.url}}>
   </div>
     
-    <div class="item" id="author" (click)="viewProfile()">
+    <div class="item" (click)="viewProfile()">
       <h3>Autor</h3>
       <h4> {{ post.author.fullName }} </h4>
       <h4> {{ post.author.email }} </h4>

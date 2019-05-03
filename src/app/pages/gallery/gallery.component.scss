@@ -1,14 +1,26 @@
 .gallery-posts {
     margin-top: 10vh;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    // flex-grow: 1;
-    flex-basis: baseline;
-    justify-content: center;
-    align-items: baseline;
+    justify-content: space-around;
+    align-items: stretch;
 }
 
 .item {
-    min-width: 30%;  
+    width: 30%;
+    
+}
+
+@media (max-width: 800px) {
+
+    .item {
+        width: 40%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .item {
+        width: 90%;
+    }
 }

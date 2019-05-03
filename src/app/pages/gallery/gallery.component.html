@@ -1,4 +1,4 @@
-<div class="gallery-posts">  
+<div class="gallery-posts"> 
   <pdp-post-item class="item" *ngFor='let post of posts' [post]="post" (onItemClick)="viewDetail($event.id, $event.author)"></pdp-post-item>
 </div>
 
