@@ -16,7 +16,7 @@ import { PostViewerComponent } from './pages/post-viewer/post-viewer.component';
 import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.component';
 import { ProfileModule } from './pages/profile/profile.module';
 import { SharedModule } from './shared/shared.module';
-
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     ToastyModule.forRoot(),
     SharedModule,
-    ProfileModule
+    ProfileModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
