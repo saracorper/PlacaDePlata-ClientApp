@@ -47,7 +47,8 @@ interface IPost {
   title: string, 
   description: string, 
   picture: IPicture,
-  author: IUser
+  author: IUser,
+  price: Number
 
 }
 
