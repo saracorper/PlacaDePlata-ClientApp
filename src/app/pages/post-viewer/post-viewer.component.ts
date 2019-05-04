@@ -35,6 +35,10 @@ export class PostViewerComponent implements OnInit {
   public viewProfile(): void {
     this.router.navigateByUrl(`profile/${this.userId}`)
   }
+
+  public buy(): void {
+    console.log("userId:", this.userId, "postId:", this.postId);
+  }
 }
 
 interface IPicture {

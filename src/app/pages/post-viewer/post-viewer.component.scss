@@ -4,17 +4,31 @@
     margin-left: 10%;
     padding: 2%;
     display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .item {
-    align-self: auto;
     justify-content: space-evenly;
     flex-direction: column; 
 }
 
+button {
+    padding: 1%;
+    margin: 2%;
+    min-width: 10%;
+    border-radius: 5px;
+    background-color:  rgb(185, 241, 185);
+    color: black;
+    align-self: center;
+    cursor: pointer;
+}
 
 .pdp-post-wrapper:hover { 
     transform: none;
@@ -24,6 +38,7 @@
     transform: scale(1.1);
     cursor:pointer;
 }
+
 
 @media (max-width: 1100px) {
 

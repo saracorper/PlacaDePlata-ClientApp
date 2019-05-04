@@ -1,16 +1,19 @@
 <div class="pdp-post-wrapper" *ngIf="post" >
-  <div class="item">
-    <h2>{{post.title}}</h2>
-    <h5>{{post.description}}</h5>
-    <img src={{post.picture?.url}}>
-  </div>
+  <div class="content">
+    <div class="item">
+      <h2>{{post.title}}</h2>
+      <h5>{{post.description}}</h5>
+      <img src={{post.picture?.url}}>
+    </div>
     
-  <div class="item" (click)="viewProfile()">
-    <h2>Autor</h2>
-    <h4> {{ post.author.fullName }} </h4>
-    <h4> {{ post.author.email }} </h4>
-    <h3> Precio: {{ post.price }} €</h3>
+    <div class="item" (click)="viewProfile()">
+      <h2>Autor</h2>
+      <h4> {{ post.author.fullName }} </h4>
+      <h4> {{ post.author.email }} </h4>
+      <h3> Precio: {{ post.price }} €</h3>
+    </div>
   </div>
+  <button (click)="buy()" class="pdp-ok">Comprar</button>
 </div>
 
 <div *ngIf="!post" style="margin-top:15%">
