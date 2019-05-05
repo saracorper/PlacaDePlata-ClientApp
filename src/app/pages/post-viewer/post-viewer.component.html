@@ -3,7 +3,7 @@
     <div class="item">
       <h2>{{post.title}}</h2>
       <h5>{{post.description}}</h5>
-      <img src={{post.picture?.url}}>
+      <img src={{post.picture?.url}} (contextmenu)="onClick($event)">
     </div>
     
     <div class="item" (click)="viewProfile()">
@@ -13,7 +13,7 @@
       <h3> Precio: {{ post.price }} €</h3>
     </div>
   </div>
-  <button (click)="buy()" class="pdp-ok">Comprar</button>
+  <button *ngIf="!isOwner()" (click)="buy()" class="pdp-ok">Comprar</button>
 </div>
 
 <div *ngIf="!post" style="margin-top:15%">
