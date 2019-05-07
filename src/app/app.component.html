@@ -1,10 +1,12 @@
 <ng2-toasty [position]="'top-right'"></ng2-toasty>
 <div class="pdp-navbar">
-    <a [routerLink]="['gallery']" *ngIf="user">Placa de Plata</a>
+    <a [routerLink]="['gallery']" *ngIf="user" style="font-family: 'Sofia', cursive;">Placa de Plata</a>
 
-    <a class="pcp-to-right" *ngIf="user" [routerLink]="['profile', user._id]">{{user.fullName || user.email}}</a>
     <a class="pcp-to-right" *ngIf="!user" [routerLink]="['login']">Acceso</a>
-    <a class="pcp-to-right" *ngIf="user" (click)="logout()">Log out</a>
+    <a class="pcp-to-right" *ngIf="user" (click)="logout()">
+        <img src="assets/door-icon.svg">
+    </a>
+    <a class="pcp-to-right" *ngIf="user" [routerLink]="['profile', user._id]">{{user.fullName || user.email}}</a>
 </div>
     
 <router-outlet></router-outlet>
