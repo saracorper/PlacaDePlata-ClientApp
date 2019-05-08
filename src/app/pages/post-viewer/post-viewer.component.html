@@ -1,21 +1,21 @@
-<div class="pdp-post-wrapper" *ngIf="post" >
-  <div class="content">
+<article class="pdp-post-wrapper" *ngIf="post" >
+  <section class="content">
     <div class="item">
       <h2>{{post.title}}</h2>
       <h5>{{post.description}}</h5>
       <img src={{post.picture?.url}} (contextmenu)="onClick($event)">
     </div>
     
-    <div class="item" (click)="viewProfile()">
+    <div class="item" id="author" (click)="viewProfile()">
       <h2>Autor</h2>
       <h4> {{ post.author.fullName }} </h4>
       <h4> {{ post.author.email }} </h4>
       <h3> Precio: {{ post.price }} €</h3>
     </div>
-  </div>
+  </section>
   <button *ngIf="!isOwner() && !isBuyed" (click)="buy()" class="pdp-ok">Comprar</button>
   <button *ngIf="isOwner() || isBuyed" (click)="download()" class="pdp-ok">Descargar</button>
-</div>
+</article>
 
 <div *ngIf="!post" style="margin-top:15%">
   <p>El post no existe</p>

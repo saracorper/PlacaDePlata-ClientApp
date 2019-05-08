@@ -3,16 +3,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: stretch;
 }
 
 .item {
     width: 20%;
     margin: 0.5%;
-    
+    align-self: baseline;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1100px) {
 
     .item {
         width: 40%;

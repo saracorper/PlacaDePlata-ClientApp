@@ -1,12 +1,22 @@
-<ng2-toasty [position]="'top-right'"></ng2-toasty>
-<div class="pdp-navbar">
-    <a [routerLink]="['gallery']" *ngIf="user" style="font-family: 'Sofia', cursive;">Placa de Plata</a>
 
-    <a class="pcp-to-right" *ngIf="!user" [routerLink]="['login']">Acceso</a>
-    <a class="pcp-to-right" *ngIf="user" (click)="logout()">
-        <img src="assets/door-icon.svg">
-    </a>
-    <a class="pcp-to-right" *ngIf="user" [routerLink]="['profile', user._id]">{{user.fullName || user.email}}</a>
-</div>
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<nav class="pdp-navbar">
+    <a id="item" [routerLink]="['gallery']" *ngIf="user">Placa de Plata</a>
+    <section class="links" id="item">
+        <a *ngIf="!user" [routerLink]="['login']">Acceso</a>
+        <a  *ngIf="user" [routerLink]="['users/:userID/cart']">
+            <img src="assets/cart-icon.svg">
+        </a>
+        <a  *ngIf="user" [routerLink]="['profile', user._id]">
+            <!-- {{user.fullName || user.email}} -->
+            <img src="assets/profile-icon.svg">
+        </a>
+        <a *ngIf="user" (click)="logout()">
+            <!-- <img src="assets/door-icon.svg"> -->
+            <img src="assets/door.svg">
+        </a>
+    </section>
+</nav>
     
 <router-outlet></router-outlet>
+<footer>Este es el pie</footer>

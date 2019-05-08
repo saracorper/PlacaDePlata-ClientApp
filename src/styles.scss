@@ -1,18 +1,13 @@
 html, body {
     width: 100%;
-    text-align: center;
     padding: 0;
     margin: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 body {
     background: url('./assets/colores.jpg') no-repeat center fixed;
     background-size: cover;
-}
-
-h1 {
-    font-family: 'Sofia',
-    cursive;
 }
 
 label {
@@ -58,12 +53,14 @@ button:disabled {
 }
 
 .pdp-form-wrapper {
-    margin-top: 10%;
+    margin-top: 10vh;
+    margin-left: 22%;
     width: 50%;
     padding: 2%;
-    display: inline-block;
     background-color: white;
     border-radius: 20px 0 20px 20px;
+    text-align: center;
+    
 }
 
 .pdp-invalid-field {
@@ -75,8 +72,14 @@ button:disabled {
 }
 
 .pdp-post-wrapper {
+    padding: 4%;
     background-color: white;
     border-radius: 20px 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    
 }
 
 .pdp-post-wrapper:hover {
@@ -86,6 +89,8 @@ button:disabled {
 @media (max-width: 1150px){
 
     .pdp-form-wrapper {
+        margin-top: 15vh;
+        margin-left: 8%;
         width: 80%;
     }
 }
