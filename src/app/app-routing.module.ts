@@ -13,6 +13,7 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { OwnerGuard } from './guards/owner-guard.service';
 import { ProfileRoutingModule } from './pages/profile/profile-routing.module';
 import { ProfileModule } from './pages/profile/profile.module';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: "not-authorized",
     component: NotAuthorizedComponent
+  }, 
+  {
+    path: "users/:userId/cart",
+    component: CartComponent
   }
 ];
 

@@ -17,6 +17,7 @@ import { NotAuthorizedComponent } from './pages/not-authorized/not-authorized.co
 import { ProfileModule } from './pages/profile/profile.module';
 import { SharedModule } from './shared/shared.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     GalleryComponent,
     PostFormComponent,
     PostViewerComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
