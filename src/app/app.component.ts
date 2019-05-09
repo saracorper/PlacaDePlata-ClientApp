@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
 
   constructor(private loginService: LoginService,
     private storage: LocalStorageService, 
+    private userService: UserService,
     private router: Router) {}
  
   ngOnInit(): void {
@@ -39,6 +40,12 @@ export class AppComponent implements OnInit{
     const helper = new JwtHelperService();
     const decoded = helper.decodeToken(token);
     this.user = decoded.user;
+
+    if(decoded.user)
+      this.userService.get(decoded.user._id, token).subscribe((user: IUser) => {
+        if (user.avatar)
+          this.avatar = user.avatar.url
+      });
   }
 
   public logout(): void {
