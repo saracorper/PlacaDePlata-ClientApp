@@ -46,18 +46,6 @@ export class PostViewerComponent implements OnInit {
     this.router.navigateByUrl(`profile/${this.userId}`)
   }
 
-  public async buy(): Promise<void> {
-    
-    const token = this.storage.read('token') as string;
-
-    let purchase: IPurchase;
-    await this.purchaseService.create(this.userId, { postId: this.postId }, token).toPromise()
-      .then((p: IPurchase) => purchase = { ...p } );
-      
-    this.isBuyed = true;
-    this.download();
-  }
-
   public addToCart(): void {
 
     if (this.cartService.alreadyInCart(this.postId)) {
@@ -90,12 +78,14 @@ export class PostViewerComponent implements OnInit {
 
   public checkIsBuyed(): void {
     const token = this.storage.read('token') as string;
+    const helper = new JwtHelperService();
+    const decoded = helper.decodeToken(token);
 
-    this.purchaseService.list(this.userId, token).subscribe((ps: IPurchase[]) => {
+    this.purchaseService.list(decoded.user._id, token).subscribe((purchases: IPurchase[]) => {
 
-      if(ps.length == 0) return;
+      if(purchases.length == 0) return;
 
-      let isBuyed = ps.find(p => { 
+      let isBuyed = purchases.find(p => { 
         let post = p.post as IPost; 
         return post._id == this.postId; 
       })

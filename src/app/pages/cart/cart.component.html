@@ -25,5 +25,5 @@
     <label> {{ totalPrice }} € </label>
   </div>
   
-  <button class="pdp-ok" (click)="buy()">Comprar</button>
+  <button class="pdp-ok" (click)="buy()" [disabled]="buyed">Comprar</button>
 </div>

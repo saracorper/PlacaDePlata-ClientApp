@@ -9,7 +9,7 @@ export class PurchasesService {
 
   constructor(private http: HttpClient) { }
 
-  public create(buyerId: string, body: {postId: string}, token: string): Observable<any> {
+  public create(buyerId: string, body: {postId: string}[], token: string): Observable<any> {
     
     const headers = new HttpHeaders({
       JWTtoken: token 
