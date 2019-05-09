@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginComponent } from './pages/login/login.component';
 import { Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
+import { IUser } from './models/models';
 
 @Component({
   selector: 'pdp-root',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit{
   @Input() logOut: LoginComponent;
 
   public user: IUser;
+  public avatar: string = 'assets/profile-icon.svg';
 
   constructor(private loginService: LoginService,
     private storage: LocalStorageService, 
@@ -25,7 +27,10 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     
     let onUserLogged = this.loginService.getOnLogged();
-    onUserLogged.subscribe(user => this.user = user as IUser);
+    onUserLogged.subscribe((user: IUser) => {
+      this.user = user;
+      this.avatar = (user && user.avatar.url)? this.user.avatar.url : this.avatar;
+    });
 
     const token = this.storage.read('token') as string;
 
@@ -45,10 +50,4 @@ export class AppComponent implements OnInit{
       this.router.navigateByUrl('login');
     }
   }
-}
-
-interface IUser {
-  _id: string,
-  fullName: string,
-  email: string
 }

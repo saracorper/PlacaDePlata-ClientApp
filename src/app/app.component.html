@@ -5,17 +5,17 @@
     <section class="links" id="item">
         <a *ngIf="!user" [routerLink]="['login']">Acceso</a>
         <a *ngIf="user" [routerLink]="['users', user._id, 'cart']">
-            <img src="assets/cart-icon.svg">
+            <img *ngIf="user" src="assets/cart-icon.svg">
         </a>
         <a *ngIf="user" [routerLink]="['profile', user._id]">
-            <img src="assets/profile-icon.svg">
+            <img *ngIf="user" src={{avatar}}>
             <!-- {{user.fullName || user.email}} -->
         </a>
         <a *ngIf="user" (click)="logout()">
-            <img src="assets/door.svg">
+            <img *ngIf="user" src="assets/door.svg">
         </a>
     </section>
 </nav>
     
 <router-outlet></router-outlet>
-<footer>Este es el pie</footer>
+<footer>Placa de Plata &copy; 2019</footer>

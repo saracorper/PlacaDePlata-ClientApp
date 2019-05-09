@@ -1,26 +1,9 @@
-
 export interface IUser {
     _id: string,
     fullName: string,
     email: string,
-    avatar: any
-}
-
-export interface IUser {
-    _id: string,
-    fullName: string,
-    email: string,
-    avatar: {
-        url: string
-    },
-    posts: [{
-        _id: string,
-        title: string,
-        description: string,
-        picture: {
-            url: string
-        }
-    }]
+    avatar: IPicture,
+    posts: IPost[]
 }
 
 export interface IPost {
