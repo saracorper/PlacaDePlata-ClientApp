@@ -13,7 +13,7 @@
       <h3> Precio: {{ post.price }} €</h3>
     </div>
   </section>
-  <button *ngIf="!isOwner() && !isBuyed" (click)="buy()" class="pdp-ok">Comprar</button>
+  <button *ngIf="!isOwner() && !isBuyed" (click)="addToCart()" class="pdp-ok">Añadir al carrito</button>
   <button *ngIf="isOwner() || isBuyed" (click)="download()" class="pdp-ok">Descargar</button>
 </article>
 

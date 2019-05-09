@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { PurchasesService } from 'src/app/services/purchases.service';
+import { CartService } from 'src/app/services/cart.service';
+import { IPost, IPurchase } from 'src/app/models/models';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'pdp-post-viewer',
@@ -21,8 +24,9 @@ export class PostViewerComponent implements OnInit {
     private route: ActivatedRoute, 
     private storage: LocalStorageService,
     private router: Router,
-    private purchaseService: PurchasesService
-  ) { }
+    private purchaseService: PurchasesService,
+    private cartService: CartService,
+    private toastyService: ToastyService ) { }
 
   ngOnInit() {
 
@@ -52,6 +56,28 @@ export class PostViewerComponent implements OnInit {
       
     this.isBuyed = true;
     this.download();
+  }
+
+  public addToCart(): void {
+
+    if (this.cartService.alreadyInCart(this.postId)) {
+      this.toastyService.info({
+        title: 'Post en carrito',
+        msg: 'El post ya está añadido',
+        timeout: 4000,
+        theme: 'bootstrap',
+        showClose: true
+      });
+
+      return;
+    }
+
+    const token = this.storage.read('token') as string;
+    const helper = new JwtHelperService();
+    const decoded = helper.decodeToken(token);
+
+    this.cartService.add(this.post);
+    this.router.navigateByUrl(`users/${decoded.user._id}/cart`);
   }
 
   public isOwner(): boolean {
@@ -88,30 +114,4 @@ export class PostViewerComponent implements OnInit {
     if(event.button == 2) 
       return false; 
   }
-}
-
-interface IPicture {
-  _id: string,
-  url: string
-}
-
-interface IPost {
-  _id: string,
-  title: string, 
-  description: string, 
-  picture: IPicture,
-  author: IUser,
-  price: Number
-
-}
-
-interface IUser {
-  _id: string,
-  fullName: string,
-  email: string
-}
-
-interface IPurchase { 
-  post: string | IPost, 
-  buyer: string 
 }
