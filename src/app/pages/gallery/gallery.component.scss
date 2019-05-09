@@ -1,5 +1,6 @@
 .gallery-posts {
     margin-top: 10vh;
+    margin-bottom: 5vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -8,6 +9,7 @@
 .item {
     width: 20%;
     margin: 0.5%;
+    margin-bottom: 2%;
     align-self: baseline;
 }
 
@@ -15,6 +17,7 @@
 
     .item {
         width: 40%;
+        margin-bottom: 5%;
     }
 }
 

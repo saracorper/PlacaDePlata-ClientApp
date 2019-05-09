@@ -31,6 +31,7 @@
 
 .links a {
     margin-left: 2%;  
+    align-items: baseline;
 }
 
 .pdp-navbar a {
@@ -50,11 +51,14 @@ a img {
 }
 
 footer {
+    position: fixed;
     width: 100%;
-    height: 50px;
-    padding-top:5px;
+    height: 30px;
     overflow: hidden;
     background-color: white;
+    bottom: 0;
+    padding-bottom: 20px;
+    margin-top: 5%;
 }
 
 

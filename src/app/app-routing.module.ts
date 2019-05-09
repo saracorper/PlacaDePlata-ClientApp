@@ -58,7 +58,8 @@ const routes: Routes = [
   }, 
   {
     path: "users/:userId/cart",
-    component: CartComponent
+    component: CartComponent,
+    canActivate: [ AuthGuard, OwnerGuard ]
   }
 ];
 

@@ -4,15 +4,14 @@
     <a id="item" [routerLink]="['gallery']" *ngIf="user">Placa de Plata</a>
     <section class="links" id="item">
         <a *ngIf="!user" [routerLink]="['login']">Acceso</a>
-        <a  *ngIf="user" [routerLink]="['users/:userID/cart']">
+        <a *ngIf="user" [routerLink]="['users', user._id, 'cart']">
             <img src="assets/cart-icon.svg">
         </a>
-        <a  *ngIf="user" [routerLink]="['profile', user._id]">
-            <!-- {{user.fullName || user.email}} -->
+        <a *ngIf="user" [routerLink]="['profile', user._id]">
             <img src="assets/profile-icon.svg">
+            <!-- {{user.fullName || user.email}} -->
         </a>
         <a *ngIf="user" (click)="logout()">
-            <!-- <img src="assets/door-icon.svg"> -->
             <img src="assets/door.svg">
         </a>
     </section>

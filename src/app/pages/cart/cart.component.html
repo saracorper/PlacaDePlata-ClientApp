@@ -1,1 +1,29 @@
-
+<div class="pdp-form-wrapper">
+  <h1>Carrito de la compra</h1>
+  
+  <table>
+    <thead>
+      <th>Imagen</th>
+      <th>Título</th>
+      <th>Precio</th>
+      <th>Borrar</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts">
+        <td> <img src={{post.picture.url}}> </td>
+        <td> {{ post.title }} </td>
+        <td> {{ post.price }} € </td>
+        <td> <button class="pdp-danger" (click)="delete(post._id)">
+          <img id="icon" src="assets/delete-icon.svg">
+        </button> </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="price">
+    <h3>Total</h3>
+    <label> {{ totalPrice }} € </label>
+  </div>
+  
+  <button class="pdp-ok" (click)="buy()">Comprar</button>
+</div>
