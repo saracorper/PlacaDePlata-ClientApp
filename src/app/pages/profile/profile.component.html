@@ -18,9 +18,17 @@
       <button *ngIf="isOwner()" (click)="deleteAccount()" class="pdp-danger">Borrar cuenta</button>
     </div>
   </div>
+
+  <div class="tab">
+    <button class="tablinks" (click)="toogleTab(true)">Posts</button>
+    <button class="tablinks" (click)="toogleTab(false)">Compras</button>
+  </div>
   
-  <div class="posts">
+  <div *ngIf="showPosts" class="posts">
     <pdp-post-item class="item" *ngFor="let post of user?.posts" [post]="post" (onItemClick)="viewDetail($event.id, $event.author)"></pdp-post-item>
+  </div>
+  <div *ngIf="!showPosts" class="posts">
+    <pdp-post-item class="item" *ngFor="let purchase of purchases" [post]="purchase.post" (onItemClick)="viewDetail($event.id, $event.author)"></pdp-post-item>
   </div>
   
   <div *ngIf="!user" style="margin-top:15%">

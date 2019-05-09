@@ -3,6 +3,8 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { IPurchase } from 'src/app/models/models';
+import { PurchasesService } from 'src/app/services/purchases.service';
 
 @Component({
   selector: 'pdp-profile',
@@ -27,13 +29,17 @@ export class ProfileComponent implements OnInit {
       }
     }]
   };
+
+  public purchases: IPurchase[];
+
+  public showPosts = true;
   
 
   constructor(private storage: LocalStorageService, 
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
-    
+    private router: Router,
+    private purchaseService: PurchasesService
   ) { }
 
   ngOnInit() {
@@ -43,6 +49,7 @@ export class ProfileComponent implements OnInit {
     let userId = this.route.snapshot.params.userId;
 
     this.userService.get(userId, token).subscribe(user => this.user = user);
+    this.purchaseService.list(userId, token).subscribe((purchases) => this.purchases = purchases);
   }
 
   public edit(): void{
@@ -76,6 +83,10 @@ export class ProfileComponent implements OnInit {
 
   public viewDetail(id: string, author: string): void {
     this.router.navigateByUrl(`/users/${author}/posts/${id}`);
+  }
+
+  public toogleTab(showPosts: boolean): void {
+    this.showPosts = showPosts;
   }
 }
 
