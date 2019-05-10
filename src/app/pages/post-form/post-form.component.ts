@@ -19,6 +19,7 @@ export class PostFormComponent implements OnInit {
 
   public valTitle: string = "";
   public valDescription: string = "";
+  public valPrice: number;
   private userId: string;
   
 
@@ -70,7 +71,8 @@ export class PostFormComponent implements OnInit {
     const body = {
       title: this.valTitle,
       description: this.valDescription,
-      picture: newPictureId
+      picture: newPictureId,
+      price: this.valPrice
     };
 
     this.postService

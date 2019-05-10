@@ -16,6 +16,12 @@
       <p *ngIf="valDescription">Descripción debe tener al menos 3 caracteres</p>
       <p *ngIf="!valDescription">Descripción no puede ir vacío</p>
     </div>
+    <label for="price">Precio</label>
+    <input type="number" name="price" required [(ngModel)]="valPrice" #price="ngModel">
+    <div class="pdp-invalid-field" *ngIf="price.invalid && (price.dirty || price.touched)">
+      <p *ngIf="valPrice">El post debe tener un precio</p>
+      <p *ngIf="!valDescription">Precio no puede ir vacío</p>
+    </div>
 
      <label for="picture">Fotografía</label>
      <input type="file" name="picture" id="picture" required (change)="valPicture=$event.target.files[0]">
