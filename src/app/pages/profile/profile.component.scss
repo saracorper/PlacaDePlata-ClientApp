@@ -46,25 +46,6 @@ button {
     margin: 2%;
 }
 
-
-@media (max-width: 1150px) {
-    .item {
-        width: 45%;
-    }
-}
-
-@media (max-width: 750px) {
-    .item {
-        width: 100%;
-    }
-
-    .pdp-profile-wrapper {
-        width: 80%;
-    }
-}
-
-
-
 /* Style the tab */
 .tab {
     width: 70%;
@@ -98,15 +79,32 @@ button {
 }
 
 .tablinks {
-    width: 20%;
+    margin-top: 3%;
+    width: 50%;
     display: inline-block;
     text-align: center;
 }
 
-// /* Style the tab content */
-// .tabcontent {
-//     display: block;
-//     padding: 6px 12px;
-//     border: 1px solid #ccc;
-//     border-top: none;
-// }
+/* Style the tab content */
+.tabcontent {
+    display: block;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+@media (max-width: 1150px) {
+    .item {
+        width: 45%;
+    }
+}
+
+@media (max-width: 750px) {
+    .item {
+        width: 100%;
+    }
+
+    .pdp-profile-wrapper {
+        width: 80%;
+    }
+}

@@ -8,7 +8,7 @@
             <img *ngIf="user" src="assets/cart-icon.svg">
         </a>
         <a *ngIf="user" [routerLink]="['profile', user._id]">
-            <img *ngIf="user" src={{avatar}}>
+            <img id="profile-photo" *ngIf="user" src={{avatar}}>
             <!-- {{user.fullName || user.email}} -->
         </a>
         <a *ngIf="user" (click)="logout()">
